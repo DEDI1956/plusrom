@@ -1,0 +1,708 @@
+/home/engine/project/public/assets/css/animations.css
+/**
+ * ROOM PLUS - Advanced Animations
+ * Smooth, sophisticated animations for premium UX
+ * Version: 1.0.0
+ */
+
+/* ============================================
+   1. MESSAGE ANIMATIONS
+   ============================================ */
+
+.message-enter {
+  animation: messageSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.message-exit {
+  animation: messageFadeOut 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes messageFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* ============================================
+   2. TYPING INDICATOR ANIMATIONS
+   ============================================ */
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  padding: 0 var(--spacing-xs);
+}
+
+.typing-dots span {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: typingDot 1.4s infinite;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingDot {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.typing-indicator {
+  animation: typingIndicatorFade 0.3s ease-out;
+}
+
+@keyframes typingIndicatorFade {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: auto;
+  }
+}
+
+/* ============================================
+   3. IMAGE UPLOAD ANIMATIONS
+   ============================================ */
+
+.image-preview {
+  animation: imagePreviewSlide 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes imagePreviewSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+    max-height: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    max-height: 200px;
+  }
+}
+
+.upload-progress {
+  animation: progressBar 2s ease-in-out;
+}
+
+@keyframes progressBar {
+  from {
+    width: 0%;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   4. ROOM EFFECTS
+   ============================================ */
+
+.room-pulse {
+  animation: roomPulse 2s infinite;
+}
+
+@keyframes roomPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(99, 102, 241, 0);
+    transform: scale(1.02);
+  }
+}
+
+.room-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.room-hover:hover {
+  transform: translateY(-8px) rotateX(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.room-join-wiggle {
+  animation: roomWiggle 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes roomWiggle {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* ============================================
+   5. SIDEBAR ANIMATIONS
+   ============================================ */
+
+.sidebar-slide {
+  animation: sidebarSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes sidebarSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.user-item-enter {
+  animation: userItemSlide 0.3s ease-out;
+}
+
+@keyframes userItemSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* ============================================
+   6. MODAL ANIMATIONS
+   ============================================ */
+
+.modal-backdrop {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: modalBackdropFade 0.3s ease-out;
+}
+
+@keyframes modalBackdropFade {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+}
+
+.modal-content-bounce {
+  animation: modalContentBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalContentBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.8);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-10px) scale(1.05);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   7. BUTTON ANIMATIONS
+   ============================================ */
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+.btn-pulse {
+  animation: btnPulse 1.5s infinite;
+}
+
+@keyframes btnPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(99, 102, 241, 0);
+  }
+}
+
+/* ============================================
+   8. NOTIFICATION ANIMATIONS
+   ============================================ */
+
+.notification-slide-in {
+  animation: notificationSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes notificationSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%) scale(0.8);
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-10px) scale(1.05);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.notification-pulse {
+  animation: notificationPulse 2s infinite;
+}
+
+@keyframes notificationPulse {
+  0%, 100% {
+    border-left-width: 4px;
+  }
+  50% {
+    border-left-width: 8px;
+  }
+}
+
+/* ============================================
+   9. LOADING ANIMATIONS
+   ============================================ */
+
+.spinner-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.spinner-dots span {
+  width: 12px;
+  height: 12px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: spinnerDot 1.4s infinite ease-in-out both;
+}
+
+.spinner-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.spinner-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes spinnerDot {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.skeleton-shimmer {
+  background: rgba(255, 255, 255, 0.1);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: skeletonShimmer 1.5s infinite;
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ============================================
+   10. GRADIENT BORDER ANIMATIONS
+   ============================================ */
+
+.gradient-border {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 2px;
+  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary), var(--color-accent), var(--color-primary));
+  background-size: 400% 400%;
+  animation: gradientRotate 3s ease infinite;
+}
+
+.gradient-border-inner {
+  width: 100%;
+  height: 100%;
+  background: var(--color-jakarta-night);
+  border-radius: var(--radius-md);
+}
+
+@keyframes gradientRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ============================================
+   11. PAGE TRANSITIONS
+   ============================================ */
+
+.page-transition-enter {
+  animation: pageEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+.page-transition-exit {
+  animation: pageExit 0.4s ease-out;
+}
+
+@keyframes pageExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* ============================================
+   12. PREMIUM HOVER EFFECTS
+   ============================================ */
+
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.hover-glow {
+  transition: box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+  filter: brightness(1.2);
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   13. 3D CARD EFFECTS
+   ============================================ */
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg);
+}
+
+.card-3d-shadow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+  border-radius: inherit;
+  transform: translateZ(-1px);
+}
+
+/* ============================================
+   14. PARTICLE EFFECTS
+   ============================================ */
+
+.particle-burst {
+  position: absolute;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: particleFloat 2s ease-out forwards;
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 1;
+    transform: scale(0) translateY(0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1) translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translateY(-40px);
+  }
+}
+
+/* ============================================
+   15. GRACEFUL DEGRADATION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .aurora-bg > div {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   16. HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  :root {
+    --glass-bg: rgba(0, 0, 0, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.3);
+  }
+  
+  .text-gradient {
+    -webkit-text-fill-color: white;
+    background: none;
+  }
+}
+
+/* ============================================
+   17. PRINT STYLES
+   ============================================ */
+
+@media print {
+  .aurora-bg,
+  .navbar {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .hero,
+  .rooms-preview {
+    background: none;
+    padding: 2rem 0;
+  }
+  
+  .luxury-button {
+    background: #ddd;
+    color: black;
+  }
+}
+
+/* ============================================
+   18. LOADING SPINNER VARIANTS
+   ============================================ */
+
+.spinner-dots-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.spinner-dots-vertical span {
+  animation: spinnerDotVertical 1.4s infinite ease-in-out;
+}
+
+.spinner-dots-vertical span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.spinner-dots-vertical span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes spinnerDotVertical {
+  0%, 40%, 100% {
+    transform: scale(0.4);
+    opacity: 0.3;
+  }
+  20% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   19. BLOB MORPH ANIMATIONS
+   ============================================ */
+
+.blob-morph {
+  animation: blobMorph 8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes blobMorph {
+  0%, 100% {
+    border-radius: 63% 37% 70% 30% / 60% 41% 59% 40%;
+  }
+  25% {
+    border-radius: 41% 59% 61% 39% / 70% 57% 43% 30%;
+  }
+  50% {
+    border-radius: 58% 42% 75% 25% / 34% 50% 50% 66%;
+  }
+  75% {
+    border-radius: 40% 60% 30% 70% / 50% 68% 32% 50%;
+  }
+}
+
+/* ============================================
+   20. FINAL POLISH ANIMATIONS
+   ============================================ */
+
+.fade-in-scale {
+  animation: fadeInScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.slide-up-fade {
+  animation: slideUpFade 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) rotateX(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}

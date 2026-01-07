@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">ROOM PLUS - Chat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/all.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="icon" href="/assets/images/favicon.png" type="image/png">
+</head>
+<body>
+  <!-- Aurora Background Effect -->
+  <div class="aurora-bg">
+    <div class="aurora-1"></div>
+    <div class="aurora-2"></div>
+    <div class="aurora-3"></div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay active">
+    <div class="spinner-loader">
+      <div class="spinner-primary"></div>
+      <p>Connecting...</p>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Toggle -->
+  <button id="mobileMenuToggle" class="mobile-menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Main Chat Container -->
+  <div class="chat-container">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand">
+          <div class="logo-icon">💬</div>
+          <h3>ROOM <span class="text-gradient">PLUS</span></h3>
+        </div>
+        <div class="user-info">
+          <div class="avatar">👤</div>
+          <div class="username" id="currentUsername">Username</div>
+        </div>
+      </div>
+      
+      <div class="sidebar-content">
+        <!-- Room List -->
+        <div class="rooms-section">
+          <div class="section-header flex-between">
+            <h4>Rooms</h4>
+            <button id="createRoomBtn" class="btn-icon-small">
+              <span>+</span>
+            </button>
+          </div>
+          <div id="roomList" class="room-list">
+            <!-- Rooms will be populated here -->
+          </div>
+        </div>
+        
+        <!-- Online Users -->
+        <div class="users-section">
+          <div class="section-header">
+            <h4>Online Users</h4>
+          </div>
+          <div id="onlineUsersList" class="users-list">
+            <!-- Online users will be populated here -->
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Chat Area -->
+    <main class="main-chat">
+      <!-- Header -->
+      <header class="chat-header">
+        <div class="chat-header-info">
+          <h2 id="currentRoomName">Select a Room</h2>
+          <div class="room-stats">
+            <span class="stat">
+              <span id="onlineCount">0</span> online
+            </span>
+          </div>
+        </div>
+        
+        <div class="chat-header-actions">
+          <button id="leaveRoomBtn" class="btn-secondary btn-leave" style="display: none;">
+            <span class="btn-icon">⬅︎</span>
+            Leave
+          </button>
+        </div>
+      </header>
+
+      <!-- Messages Area -->
+      <div class="messages-container">
+        <div id="messagesArea" class="messages-area">
+          <!-- Messages will be populated here -->
+        </div>
+        
+        <!-- Typing Indicator -->
+        <div id="typingIndicator" class="typing-indicator" style="display: none;">
+          <div class="typing-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span id="typingUsers"></span>
+        </div>
+      </div>
+
+      <!-- Message Input -->
+      <div class="message-input-container">
+        <div class="message-input-wrapper">
+          <!-- Image Preview -->
+          <div id="imagePreview" class="image-preview" style="display: none;">
+            <img src="" alt="Preview" id="previewImage">
+            <button id="removeImageBtn" class="btn-icon-small">✕</button>
+          </div>
+          
+          <form id="messageForm" class="message-form">
+            <div class="input-wrapper">
+              <!-- File Upload Button -->
+              <button type="button" id="uploadImageBtn" class="btn-icon-upload">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+              </button>
+              
+              <!-- Hidden File Input -->
+              <input type="file" id="imageInput" accept="image/*" style="display: none;">
+              
+              <!-- Text Input -->
+              <textarea 
+                id="messageInput" 
+                placeholder="Type your message... (Press Enter to send, Shift+Enter for new line)"
+                rows="1"
+                autocomplete="off"
+              ></textarea>
+              
+              <!-- Send Button -->
+              <button type="submit" id="sendBtn" class="btn-send">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Notifications -->
+  <div id="notificationContainer" class="notification-container"></div>
+
+  <!-- Create Room Modal -->
+  <div id="createRoomModal" class="modal">
+    <div class="modal-content glass-effect">
+      <div class="modal-header">
+        <h3>Create New Room</h3>
+        <button class="modal-close" id="closeModal">&times;</button>
+      </div>
+      
+      <form id="createRoomForm" class="create-room-form">
+        <div class="form-group">
+          <label for="roomName">Room Name</label>
+          <input 
+            type="text" 
+            id="roomName" 
+            name="roomName" 
+            placeholder="Enter room name..."
+            maxlength="255"
+            required
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="roomDescription">Description (Optional)</label>
+          <textarea 
+            id="roomDescription" 
+            name="roomDescription" 
+            placeholder="Enter room description..."
+            rows="3"
+          ></textarea>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" id="cancelCreate" class="btn-secondary">Cancel</button>
+          <button type="submit" class="luxury-button">Create Room</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/utils.js"></script>
+  <script src="/assets/js/socket-client.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/chat.js"></script>
+</body>
+</html>
