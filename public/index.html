@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROOM PLUS - Modern Realtime Chat</title>
+  <meta name="description" content="Join ROOM PLUS - A modern, beautiful, and realtime public chat platform">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/all.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <link rel="icon" href="/assets/images/favicon.png" type="image/png">
+</head>
+<body>
+  <!-- Aurora Background Effect -->
+  <div class="aurora-bg">
+    <div class="aurora-1"></div>
+    <div class="aurora-2"></div>
+    <div class="aurora-3"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="logo-icon">💬</div>
+        <h1>ROOM <span class="text-gradient">PLUS</span></h1>
+      </div>
+      <div class="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#about" class="nav-link">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title animate-fade-in">
+          Welcome to <br>
+          <span class="text-gradient">ROOM PLUS</span>
+        </h1>
+        <p class="hero-subtitle animate-fade-in-delay">
+          Experience modern realtime chat with luxury design. 
+          Join public rooms, share images, and connect instantly.
+        </p>
+        
+        <!-- Enter Form -->
+        <div class="enter-card glass-effect animate-slide-up">
+          <h2>Join the Conversation</h2>
+          <form id="enterForm" class="enter-form">
+            <div class="form-group">
+              <label for="username" class="form-label">Choose Your Username</label>
+              <div class="input-group">
+                <span class="input-icon">👤</span>
+                <input 
+                  type="text" 
+                  id="username" 
+                  name="username" 
+                  placeholder="Enter your username..."
+                  maxlength="20"
+                  required
+                  autocomplete="off"
+                >
+              </div>
+            </div>
+            
+            <button type="submit" class="luxury-button btn-enter">
+              <span class="btn-text">Enter Chat</span>
+              <div class="btn-loader hidden">
+                <div class="spinner"></div>
+              </div>
+            </button>
+          </form>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-container animate-fade-in-up">
+          <div class="stat-item">
+            <div class="stat-number" id="onlineUsers">0</div>
+            <div class="stat-label">Online Users</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="activeRooms">0</div>
+            <div class="stat-label">Active Rooms</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="totalMessages">0</div>
+            <div class="stat-label">Messages Sent</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Rooms -->
+  <section class="rooms-preview">
+    <div class="container">
+      <h2 class="section-title animate-fade-in">
+        Available <span class="text-gradient">Rooms</span>
+      </h2>
+      
+      <div class="rooms-grid" id="roomsContainer">
+        <!-- Rooms will be dynamically loaded here -->
+        <div class="loading-rooms">
+          <div class="spinner-primary"></div>
+          <p>Loading rooms...</p>
+        </div>
+      </div>
+      
+      <div class="create-room-section animate-slide-up">
+        <button id="createRoomBtn" class="luxury-button btn-create-room">
+          <span class="btn-icon">➕</span>
+          Create New Room
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title text-center animate-fade-in">
+        Why <span class="text-gradient">ROOM PLUS</span>?
+      </h2>
+      
+      <div class="features-grid">
+        <div class="feature-card glass-effect animate-fade-in-up">
+          <div class="feature-icon">⚡</div>
+          <h3>Realtime Communication</h3>
+          <p>Instant messaging with Socket.IO technology for seamless realtime experience.</p>
+        </div>
+        
+        <div class="feature-card glass-effect animate-fade-in-up delay-100">
+          <div class="feature-icon">🎨</div>
+          <h3>Modern Luxury Design</h3>
+          <p>Stunning dark theme with gradient effects, glass morphism, and smooth animations.</p>
+        </div>
+        
+        <div class="feature-card glass-effect animate-fade-in-up delay-200">
+          <div class="feature-icon">📱</div>
+          <h3>Mobile Responsive</h3>
+          <p>Perfectly optimized for all devices with mobile-first approach.</p>
+        </div>
+        
+        <div class="feature-card glass-effect animate-fade-in-up delay-300">
+          <div class="feature-icon">🖼️</div>
+          <h3>Image Sharing</h3>
+          <p>Upload and share images instantly with Cloudinary integration.</p>
+        </div>
+        
+        <div class="feature-card glass-effect animate-fade-in-up delay-400">
+          <div class="feature-icon">🔒</div>
+          <h3>Secure & Private</h3>
+          <p>Public rooms with no registration required. Just choose a username and chat.</p>
+        </div>
+        
+        <div class="feature-card glass-effect animate-fade-in-up delay-500">
+          <div class="feature-icon">🚀</div>
+          <h3>Auto Deploy</h3>
+          <p>Continuously deployed on Render with PostgreSQL persistence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Create Room Modal -->
+  <div id="createRoomModal" class="modal">
+    <div class="modal-content glass-effect">
+      <div class="modal-header">
+        <h3>Create New Room</h3>
+        <button class="modal-close" id="closeModal">&times;</button>
+      </div>
+      
+      <form id="createRoomForm" class="create-room-form">
+        <div class="form-group">
+          <label for="roomName">Room Name</label>
+          <input 
+            type="text" 
+            id="roomName" 
+            name="roomName" 
+            placeholder="Enter room name..."
+            maxlength="255"
+            required
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="roomDescription">Description (Optional)</label>
+          <textarea 
+            id="roomDescription" 
+            name="roomDescription" 
+            placeholder="Enter room description..."
+            rows="3"
+          ></textarea>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" id="cancelCreate" class="btn-secondary">Cancel</button>
+          <button type="submit" class="luxury-button">Create Room</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notifications -->
+  <div id="notificationContainer" class="notification-container"></div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/utils.js"></script>
+  <script src="/assets/js/socket-client.js"></script>
+  <script src="/assets/js/ui.js"></script>
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>
